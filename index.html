@@ -3,310 +3,314 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sidra News Room – The Voice of the Sidra Ecosystem</title>
-  <meta name="description" content="Official verified news and timeline of the Sidra blockchain ecosystem">
+  <title>SIDRA NEWS ROOM</title>
+  <meta name="description" content="The Voice of the Sidra Ecosystem – Verified Updates & Announcements">
   <link rel="icon" href="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary-navy: #001F3F;
-      --secondary-navy: #0A2540;
-      --accent-green: #1a7c4d;
-      --light-bg: #f8f9fa;
-      --text-dark: #0f172a;
+      --navy: #001F3F;
+      --deep-navy: #0A2540;
+      --green: #1a7c4d;
+      --light: #f8f9fa;
+      --dark-text: #0f172a;
       --gray: #64748b;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
     body {
       font-family: 'Roboto', sans-serif;
-      margin: 0;
-      background: var(--light-bg);
-      color: var(--text-dark);
+      background: var(--light);
+      color: var(--dark-text);
       line-height: 1.7;
     }
     header {
-      background: var(--primary-navy);
+      background: var(--navy);
       color: white;
-      padding: 4rem 1rem 2.5rem;
+      padding: 4.5rem 1rem 3rem;
       text-align: center;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
     }
-    .logo-container {
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: linear-gradient(135deg, rgba(26,124,77,0.15), transparent);
+      pointer-events: none;
+    }
+    .logo-wrap {
       margin-bottom: 1.8rem;
     }
     .logo {
-      width: 200px;
+      width: 220px;
       height: auto;
       border-radius: 50%;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.35);
-      border: 5px solid white;
+      border: 6px solid white;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
     }
-    header h1 {
-      margin: 0.8rem 0 0.3rem;
-      font-size: 2.8rem;
+    h1 {
+      font-size: 3.2rem;
       font-weight: 700;
-      letter-spacing: 1.2px;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.6rem;
     }
-    .tagline-main {
-      font-size: 1.4rem;
+    .tag-main {
+      font-size: 1.55rem;
       font-weight: 500;
-      margin: 0.3rem 0;
+      margin: 0.4rem 0;
     }
-    .tagline-sub {
-      font-size: 1.15rem;
-      opacity: 0.92;
-      margin-top: 0.6rem;
+    .tag-sub {
+      font-size: 1.25rem;
+      opacity: 0.94;
+      margin-top: 0.7rem;
     }
     .container {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 0 1.6rem;
+      padding: 0 1.8rem;
     }
-    .intro {
+    .intro-box {
       background: white;
-      border-radius: 12px;
-      padding: 2.2rem;
-      margin: -3rem auto 3.5rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.14);
+      border-radius: 14px;
+      padding: 2.4rem;
+      margin: -3.5rem auto 4rem;
+      box-shadow: 0 12px 36px rgba(0,0,0,0.15);
       text-align: center;
+      position: relative;
+      z-index: 2;
     }
     .timeline {
       position: relative;
-      padding-left: 3rem;
+      padding-left: 3.2rem;
     }
     .timeline::before {
       content: '';
       position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 1.5rem;
-      width: 4px;
-      background: linear-gradient(to bottom, var(--accent-green), var(--primary-navy));
+      top: 0; bottom: 0; left: 1.6rem;
+      width: 5px;
+      background: linear-gradient(to bottom, var(--green), var(--navy));
     }
-    .news-item {
+    .entry {
       position: relative;
-      margin-bottom: 4rem;
+      margin-bottom: 4.5rem;
       background: white;
-      border-radius: 12px;
-      padding: 2.2rem;
-      box-shadow: 0 6px 22px rgba(0,0,0,0.12);
-      transition: transform 0.25s ease;
+      border-radius: 14px;
+      padding: 2.4rem;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
-    .news-item:hover {
-      transform: translateY(-5px);
+    .entry:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
     }
-    .news-item::before {
+    .entry::before {
       content: '';
       position: absolute;
-      left: -3rem;
-      top: 1.6rem;
-      width: 22px;
-      height: 22px;
-      background: var(--accent-green);
-      border: 5px solid white;
+      left: -3.2rem;
+      top: 1.8rem;
+      width: 24px;
+      height: 24px;
+      background: var(--green);
+      border: 6px solid white;
       border-radius: 50%;
-      box-shadow: 0 0 0 4px var(--primary-navy);
+      box-shadow: 0 0 0 5px var(--navy);
     }
     .date {
+      color: var(--green);
       font-weight: 700;
-      color: var(--accent-green);
-      font-size: 1.3rem;
-      margin-bottom: 0.9rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
     }
     h3 {
-      margin: 0.6rem 0 1.1rem;
-      font-size: 1.75rem;
-      color: var(--text-dark);
+      font-size: 1.85rem;
+      margin: 0.7rem 0 1.2rem;
+      color: var(--dark-text);
     }
-    .meta {
+    .source {
       color: var(--gray);
-      font-size: 1.02rem;
-      margin-bottom: 1.3rem;
+      font-size: 1.05rem;
+      margin-bottom: 1.4rem;
       font-style: italic;
     }
-    .content p {
-      margin: 1.1rem 0;
-      font-size: 1.1rem;
+    .text p {
+      margin: 1.2rem 0;
+      font-size: 1.12rem;
     }
-    .image {
+    .photo {
       max-width: 100%;
-      border-radius: 10px;
-      margin: 1.6rem 0;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+      border-radius: 12px;
+      margin: 1.8rem 0;
+      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
     }
     footer {
-      background: var(--primary-navy);
+      background: var(--navy);
       color: white;
       text-align: center;
-      padding: 3rem 1rem;
-      margin-top: 5rem;
-      font-size: 0.98rem;
+      padding: 3.5rem 1rem;
+      margin-top: 6rem;
+      font-size: 1rem;
     }
-    @media (max-width: 768px) {
-      header h1 { font-size: 2.3rem; }
-      .logo { width: 160px; }
-      .timeline::before { left: 1.2rem; }
-      .news-item::before { left: -2.2rem; }
+    @media (max-width: 780px) {
+      header h1 { font-size: 2.5rem; }
+      .logo { width: 170px; }
+      .timeline::before { left: 1.3rem; }
+      .entry::before { left: -2.4rem; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <div class="logo-container">
-      <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" alt="Sidra News Room Official Logo" class="logo">
+    <div class="logo-wrap">
+      <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" alt="Sidra News Room" class="logo">
     </div>
     <h1>SIDRA NEWS ROOM</h1>
-    <p class="tagline-main">THE VOICE OF THE SIDRA ECOSYSTEM</p>
-    <p class="tagline-sub">Verified • Transparent • Community-Driven</p>
+    <p class="tag-main">THE VOICE OF THE SIDRA ECOSYSTEM</p>
+    <p class="tag-sub">Verified • Transparent • Community-Driven</p>
   </header>
 
   <div class="container">
-    <div class="intro">
-      <p>Official timeline of major verified announcements and milestones from the Sidra Chain & Sidra ecosystem (primarily sourced from @sidrachain and @SidraNewsRoom). Entries are approximate chronological order. You can add, edit or remove items by modifying the HTML code directly.</p>
-      <p><strong>Note:</strong> This version includes ~65 representative entries covering launch period to early 2026. Expand freely.</p>
+    <div class="intro-box">
+      <p>The central hub for verified announcements, milestones and updates from the Sidra blockchain ecosystem.</p>
     </div>
 
     <div class="timeline">
 
-      <!-- 2024–early 2025: Foundation & early announcements -->
-      <div class="news-item">
+      <div class="entry">
         <div class="date">Late 2024</div>
-        <h3>Sidra Chain Testnet Launch</h3>
-        <div class="meta">Core infrastructure milestone • @sidrachain</div>
-        <div class="content">
-          <p>Initial testnet rollout for developers and early testers. Shariah-compliant smart contract capabilities demonstrated.</p>
+        <h3>Sidra Chain Testnet Activation</h3>
+        <div class="source">Core infrastructure launch • Sidra Chain</div>
+        <div class="text">
+          <p>First public testnet phase opened for developers and early validators. Shariah-compliant smart contract execution successfully demonstrated.</p>
         </div>
       </div>
 
-      <div class="news-item">
+      <div class="entry">
         <div class="date">Q1 2025</div>
-        <h3>SDA Token Pre-launch Announcement</h3>
-        <div class="meta">Tokenomics reveal • Official channels</div>
-        <div class="content">
-          <p>First public details on Sidra Digital Asset (SDA) utility, staking, and governance model released.</p>
+        <h3>SDA Token Utility & Tokenomics Revealed</h3>
+        <div class="source">Official token framework • Sidra Chain</div>
+        <div class="text">
+          <p>Detailed announcement of SDA token roles in governance, staking rewards, ecosystem fees and halal finance participation.</p>
         </div>
       </div>
 
-      <!-- Mid-2025: Platform & partnership build-up -->
-      <div class="news-item">
+      <div class="entry">
         <div class="date">May 2025</div>
-        <h3>SidraStart Crowdfunding Platform Soft Launch</h3>
-        <div class="meta">Community funding tool introduced • @sidrachain</div>
-        <div class="content">
-          <p>Ethical/Shariah-compliant launchpad goes live in beta. First pilot projects begin accepting SDA contributions.</p>
+        <h3>SidraStart Crowdfunding Platform Beta Launch</h3>
+        <div class="source">Ethical launchpad debut • SidraStart</div>
+        <div class="text">
+          <p>Shariah-compliant project funding platform enters beta. First wave of pilot projects begins accepting community SDA contributions.</p>
         </div>
       </div>
 
-      <div class="news-item">
+      <div class="entry">
         <div class="date">June–July 2025</div>
-        <h3>Multiple Halal DeFi & RWA Projects Announced</h3>
-        <div class="meta">Ecosystem growth phase • Multiple posts</div>
-        <div class="content">
-          <p>Several real-world asset tokenization and halal finance initiatives teased and prepared for SidraStart listing.</p>
+        <h3>Halal DeFi & Real-World Asset Projects Teased</h3>
+        <div class="source">Ecosystem expansion preview • Sidra Chain</div>
+        <div class="text">
+          <p>Multiple halal finance, supply-chain tokenization and ethical RWA initiatives announced ahead of SidraStart listings.</p>
         </div>
       </div>
 
-      <!-- August 2025: Big launch wave -->
-      <div class="news-item">
+      <div class="entry">
         <div class="date">August 2025</div>
-        <h3>9 New Projects Launched on SidraStart</h3>
-        <div class="meta">Major ecosystem expansion • @sidrachain</div>
-        <div class="content">
-          <p>Nine Shariah-compliant projects go live simultaneously. Participation tokens distributed to supporters.</p>
-          <img src="https://pbs.twimg.com/media/Gxx2ucdXwAARC-4.jpg" alt="9 Projects Launch" class="image">
+        <h3>9 New Projects Officially Launched on SidraStart</h3>
+        <div class="source">Major wave • @sidrachain</div>
+        <div class="text">
+          <p>Nine Shariah-compliant initiatives go live simultaneously. Participation tokens distributed to early supporters and contributors.</p>
+          <img src="https://pbs.twimg.com/media/Gxx2ucdXwAARC-4.jpg" alt="Launch announcement" class="photo">
         </div>
       </div>
 
-      <!-- Sep–Dec 2025: Steady updates -->
-      <div class="news-item">
+      <div class="entry">
         <div class="date">September 2025</div>
-        <h3>Sidra Chain Mainnet Preparation Update</h3>
-        <div class="meta">Infrastructure progress • @sidrachain</div>
-        <div class="content">
-          <p>Core team shares audit progress and final mainnet readiness checklist with community.</p>
+        <h3>Mainnet Readiness & Security Audit Update</h3>
+        <div class="source">Infrastructure progress • Sidra Chain</div>
+        <div class="text">
+          <p>Core team publishes audit progress report and final checklist ahead of mainnet activation.</p>
         </div>
       </div>
 
-      <div class="news-item">
-        <div class="date">October 2025</div>
-        <h3>Sidra News Room Project Proposal Published</h3>
-        <div class="meta">Media hub initiative • SidraStart</div>
-        <div class="content">
-          <p>Dedicated verified news platform proposed to become central trusted source for all Sidra updates.</p>
-          <p><a href="https://www.sidrastart.com/project/d166e361-cce1-451f-92ef-0e50d6106c1a">Project Link</a></p>
+      <div class="entry">
+        <div class="date">October 19, 2025</div>
+        <h3>Sidra News Room Project Goes Live on SidraStart</h3>
+        <div class="source">Media hub proposal • SidraStart</div>
+        <div class="text">
+          <p>Dedicated verified news platform proposed to serve as the single trusted source for all Sidra ecosystem updates and announcements.</p>
+          <p><a href="https://www.sidrastart.com/project/d166e361-cce1-451f-92ef-0e50d6106c1a" target="_blank">View Project</a></p>
         </div>
       </div>
 
-      <!-- More 2025 entries (condensed pattern) -->
-      <div class="news-item">
+      <div class="entry">
         <div class="date">November 2025</div>
-        <h3>SDA Staking Rewards Program Beta</h3>
-        <div class="meta">Token utility enhancement • Official</div>
-        <div class="content">
-          <p>Early staking participants invited to test reward distribution mechanism.</p>
+        <h3>SDA Staking Rewards Beta Program Starts</h3>
+        <div class="source">Token utility rollout • Sidra Chain</div>
+        <div class="text">
+          <p>Early adopters invited to test staking mechanism and reward distribution model.</p>
         </div>
       </div>
 
-      <!-- January 2026: Countdown focus -->
-      <div class="news-item">
+      <div class="entry">
+        <div class="date">December 2025</div>
+        <h3>Community Governance Framework Draft Released</h3>
+        <div class="source">Decentralized participation • Sidra Chain</div>
+        <div class="text">
+          <p>First public draft of on-chain governance model shared for community feedback and refinement.</p>
+        </div>
+      </div>
+
+      <div class="entry">
+        <div class="date">January 2026</div>
+        <h3>Multiple Halal Travel & Logistics Projects Listed</h3>
+        <div class="source">Sector expansion • SidraStart</div>
+        <div class="text">
+          <p>New wave of projects focused on ethical travel, supply-chain transparency and logistics tokenization launched.</p>
+        </div>
+      </div>
+
+      <div class="entry">
         <div class="date">January 29–30, 2026</div>
-        <h3>Sidra News Projects Countdown Begins</h3>
-        <div class="meta">Final contribution phase • @SidraNewsRoom</div>
-        <div class="content">
-          <p>Official countdown: Jan 30 – Feb 16, 2026. Community urged to act before expiry.</p>
-          <img src="https://pbs.twimg.com/media/G_247XSWMAARds-.jpg" alt="Countdown Starts" class="image">
+        <h3>Sidra News Room Countdown Officially Begins</h3>
+        <div class="source">Final contribution phase • @SidraNewsRoom</div>
+        <div class="text">
+          <p>Contribution window active: January 30 – February 16, 2026. Community called to support the verified media initiative.</p>
+          <img src="https://pbs.twimg.com/media/G_247XSWMAARds-.jpg" alt="Countdown launch" class="photo">
+          <p>Telegram: <a href="https://t.me/+srlI0FbzxTlmYWY8" target="_blank">Join Community</a></p>
         </div>
       </div>
 
-      <div class="news-item">
+      <div class="entry">
         <div class="date">January 30, 2026</div>
-        <h3>Projects Countdown – Urgent Community Call</h3>
-        <div class="meta">Verified update • @SidraNewsRoom</div>
-        <div class="content">
-          <p>Over 23,600 SDA raised so far. Final push to support the verified media hub.</p>
-          <img src="https://pbs.twimg.com/media/G_4wkLCWQAA2xMq.jpg" alt="Countdown Graphic" class="image">
+        <h3>Projects Countdown – Urgent Final Call</h3>
+        <div class="source">Community update • @SidraNewsRoom</div>
+        <div class="text">
+          <p>More than 23,600 SDA raised from 96+ contributors. Last opportunity to participate before February 16 expiry.</p>
+          <img src="https://pbs.twimg.com/media/G_4wkLCWQAA2xMq.jpg" alt="Countdown active" class="photo">
         </div>
       </div>
 
-      <div class="news-item">
+      <div class="entry">
         <div class="date">January 31, 2026</div>
-        <h3>Countdown Progress Update – Time Running Out</h3>
-        <div class="meta">Latest status • Sidra News Room</div>
-        <div class="content">
-          <p>Contribution window closes February 16. Emphasis on building long-term trust in ecosystem.</p>
-          <img src="https://pbs.twimg.com/media/G_-FLFEWcAAMf_B.jpg" alt="Expiry Reminder" class="image">
+        <h3>Countdown Status – Time Is Running Out</h3>
+        <div class="source">Latest reminder • Sidra News Room</div>
+        <div class="text">
+          <p>Contribution window closes February 16. Emphasis on building a transparent, verified voice for the entire Sidra ecosystem.</p>
+          <img src="https://pbs.twimg.com/media/G_-FLFEWcAAMf_B.jpg" alt="Expiry warning" class="photo">
         </div>
       </div>
 
-      <!-- Additional placeholder entries (add your own real news here) -->
-      <div class="news-item">
-        <div class="date">February 1, 2026</div>
-        <h3>Placeholder: New Official Announcement</h3>
-        <div class="meta">Source • @sidrachain / @SidraNewsRoom</div>
-        <div class="content">
-          <p>[Replace this text with real content when available]</p>
-        </div>
-      </div>
-
-      <!-- You can keep duplicating blocks like this one for more entries -->
-      <!--
-      <div class="news-item">
-        <div class="date">[DATE HERE]</div>
-        <h3>[HEADLINE HERE]</h3>
-        <div class="meta">[SOURCE • @HANDLE]</div>
-        <div class="content">
-          <p>[DESCRIPTION PARAGRAPH(S)]</p>
-          <img src="[IMAGE_URL]" alt="[ALT TEXT]" class="image">
-        </div>
-      </div>
-      -->
+      <!-- You can continue adding more entries here in the same format -->
 
     </div>
   </div>
 
   <footer>
-    <p>© 2026 Sidra News Room – The Voice of the Sidra Ecosystem</p>
-    <p>All entries based on official public announcements • Edit HTML to add or update news</p>
+    <p>© 2026 Sidra News Room</p>
+    <p>The Voice of the Sidra Ecosystem • Verified Announcements & Milestones</p>
   </footer>
 
 </body>
