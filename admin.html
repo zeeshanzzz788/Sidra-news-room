@@ -6,65 +6,250 @@
     <title>Admin • Sidra News Room</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Playfair+Display:wght@700&display=swap');
+    </style>
 </head>
 <body class="bg-zinc-950 text-white min-h-screen">
 
     <!-- LOGIN SCREEN -->
-    <div id="loginScreen" class="flex items-center justify-center min-h-screen">
-        <div class="bg-zinc-900 p-10 rounded-3xl w-full max-w-md">
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center">
+        <div class="bg-zinc-900 rounded-3xl p-12 w-full max-w-md">
             <div class="flex justify-center mb-8">
                 <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-20">
             </div>
-            <h1 class="text-3xl font-bold text-center mb-8">Sidra News Room Admin</h1>
-            <input id="username" type="text" value="admin" placeholder="Username" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-4">
-            <input id="password" type="password" value="sidra2026" placeholder="Password" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-8">
-            <button onclick="login()" class="w-full bg-[#bb1919] hover:bg-red-700 py-5 rounded-2xl font-bold text-lg">LOGIN TO ADMIN</button>
-            <p class="text-center text-xs text-zinc-500 mt-6">Demo: admin / sidra2026</p>
+            <h1 class="text-3xl font-bold text-center mb-2">Sidra News Room</h1>
+            <p class="text-center text-zinc-400 mb-10">Admin Dashboard</p>
+            
+            <input id="username" type="text" placeholder="Username" value="admin" 
+                   class="block w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-4 focus:border-white outline-none">
+            
+            <!-- NO AUTO-FILL PASSWORD -->
+            <input id="password" type="password" placeholder="Password" 
+                   class="block w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-8 focus:border-white outline-none">
+            
+            <button onclick="attemptLogin()" 
+                    class="w-full bg-[#bb1919] hover:bg-red-700 py-5 rounded-2xl font-bold text-lg transition-colors">
+                LOGIN TO ADMIN PANEL
+            </button>
+            
+            <p class="text-center text-xs text-zinc-500 mt-6">
+                Your secure password: <span class="font-mono bg-zinc-800 px-2 py-1 rounded">SidraSecureAdmin2026!Pass42</span><br>
+                <span class="text-[10px]">(Change after first login)</span>
+            </p>
         </div>
     </div>
 
-    <!-- ADMIN PANEL (hidden until login) -->
+    <!-- ADMIN PANEL -->
     <div id="adminPanel" class="hidden">
-        <nav class="bg-zinc-900 border-b border-zinc-800 px-8 py-6 flex justify-between items-center">
+        <!-- Top Nav -->
+        <nav class="bg-zinc-900 border-b border-zinc-700 px-8 py-5 flex items-center justify-between sticky top-0 z-50">
             <div class="flex items-center gap-4">
                 <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-10">
-                <span class="font-bold text-2xl">Sidra News Room ADMIN</span>
+                <span class="text-2xl font-bold tracking-tighter">SIDRA NEWS ROOM <span class="text-xs text-emerald-400 align-super">ADMIN</span></span>
             </div>
-            <button onclick="logout()" class="bg-red-900 hover:bg-red-800 px-6 py-3 rounded-2xl flex items-center gap-2">
+            <button onclick="logoutAdmin()" class="px-6 py-3 bg-zinc-800 hover:bg-red-900 rounded-2xl flex items-center gap-2">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </button>
         </nav>
-        <div class="p-8 max-w-7xl mx-auto">
-            <h1 class="text-4xl font-bold mb-10">Dashboard</h1>
-            <!-- Full admin table, new article form, stats, etc. (same powerful features as last version) -->
-            <div class="bg-zinc-900 rounded-3xl p-8">
-                <button onclick="addNewArticle()" class="bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl">+ New Article</button>
-                <!-- Table + form here (copy from previous admin code if you want) -->
+
+        <div class="p-8 max-w-6xl mx-auto">
+            <div class="flex justify-between items-center mb-10">
+                <h1 class="text-4xl font-bold">Dashboard</h1>
+                <button onclick="showNewArticleForm()" 
+                        class="bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl font-semibold flex items-center gap-3">
+                    <i class="fas fa-plus"></i> NEW ARTICLE
+                </button>
+            </div>
+
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-12">
+                <div class="bg-zinc-900 p-6 rounded-3xl">
+                    <div id="totalArticles" class="text-5xl font-bold text-emerald-400">3</div>
+                    <div class="text-zinc-400 text-sm mt-1">Published Articles</div>
+                </div>
+                <div class="bg-zinc-900 p-6 rounded-3xl">
+                    <div class="text-5xl font-bold text-amber-400">7</div>
+                    <div class="text-zinc-400 text-sm mt-1">Published Today</div>
+                </div>
+            </div>
+
+            <!-- Articles Table -->
+            <div class="bg-zinc-900 rounded-3xl overflow-hidden">
+                <table class="w-full">
+                    <thead>
+                        <tr class="border-b border-zinc-700 text-left text-xs text-zinc-400">
+                            <th class="px-8 py-5 font-normal">TITLE</th>
+                            <th class="px-8 py-5 font-normal">CATEGORY</th>
+                            <th class="px-8 py-5 font-normal">DATE</th>
+                            <th class="px-8 py-5 font-normal text-center">ACTIONS</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminTableBody" class="text-sm divide-y divide-zinc-700">
+                        <!-- JS populated -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- NEW ARTICLE FORM (overlay) -->
+        <div id="articleFormOverlay" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+            <div class="bg-zinc-900 w-full max-w-3xl rounded-3xl max-h-[92vh] overflow-auto">
+                <div class="p-8">
+                    <div class="flex justify-between items-center mb-8">
+                        <h2 id="formTitle" class="text-3xl font-bold">New Article</h2>
+                        <button onclick="hideArticleForm()" class="text-4xl text-zinc-400 hover:text-white">×</button>
+                    </div>
+                    <form id="articleForm" onsubmit="saveArticle(event)">
+                        <input type="hidden" id="editId">
+                        <div class="space-y-6">
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-zinc-400 mb-2">Title</label>
+                                <input id="titleInput" required type="text" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4">
+                            </div>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-zinc-400 mb-2">Category</label>
+                                    <select id="categoryInput" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4">
+                                        <option value="SidraChain">SidraChain</option>
+                                        <option value="DeFi">DeFi & Markets</option>
+                                        <option value="Shariah">Shariah Finance</option>
+                                        <option value="Community">Community</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase tracking-widest text-zinc-400 mb-2">Image URL</label>
+                                    <input id="imageInput" type="text" placeholder="https://..." class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-zinc-400 mb-2">Excerpt</label>
+                                <textarea id="excerptInput" rows="3" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4"></textarea>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase tracking-widest text-zinc-400 mb-2">Full Content (HTML OK)</label>
+                                <textarea id="contentInput" rows="12" class="w-full bg-zinc-800 border border-zinc-700 rounded-3xl px-6 py-4 font-mono text-sm"></textarea>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 mt-10">
+                            <button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 py-5 rounded-2xl font-bold text-lg">PUBLISH ARTICLE</button>
+                            <button type="button" onclick="hideArticleForm()" class="flex-1 bg-zinc-800 hover:bg-zinc-700 py-5 rounded-2xl font-bold text-lg">CANCEL</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        function login() {
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            if (user === 'admin' && pass === 'sidra2026') {
+        let articles = JSON.parse(localStorage.getItem('sidraArticles')) || [
+            {id:0, title:"SidraChain Surpasses 35 Million Transactions...", category:"SidraChain", date:"21 Feb 2026", image:"https://picsum.photos/id/1015/1200/630", excerpt:"...", content:"<p>Verified story...</p>"},
+            {id:1, title:"First Shariah-compliant lending protocol hits $42M TVL...", category:"DeFi", date:"20 Feb 2026", image:"https://picsum.photos/id/237/600/400", excerpt:"...", content:"<p>Verified story...</p>"}
+        ];
+
+        function saveToStorage() {
+            localStorage.setItem('sidraArticles', JSON.stringify(articles));
+        }
+
+        function renderAdminTable() {
+            const tbody = document.getElementById('adminTableBody');
+            tbody.innerHTML = '';
+            articles.forEach(a => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td class="px-8 py-6">${a.title.substring(0,55)}...</td>
+                        <td class="px-8 py-6">${a.category}</td>
+                        <td class="px-8 py-6">${a.date}</td>
+                        <td class="px-8 py-6 text-center">
+                            <button onclick="editArticle(${a.id})" class="text-sky-400 hover:text-white mx-2"><i class="fas fa-edit"></i></button>
+                            <button onclick="deleteArticle(${a.id})" class="text-red-400 hover:text-white mx-2"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+            });
+            document.getElementById('totalArticles').textContent = articles.length;
+        }
+
+        function attemptLogin() {
+            const pass = document.getElementById('password').value.trim();
+            if (pass === 'SidraSecureAdmin2026!Pass42') {
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('adminPanel').classList.remove('hidden');
-                localStorage.setItem('sidraAdminLoggedIn', 'true');
+                renderAdminTable();
             } else {
-                alert('❌ Wrong password. Use: admin / sidra2026');
+                alert('❌ Incorrect password. Your secure password is: SidraSecureAdmin2026!Pass42');
             }
         }
-        function logout() {
-            localStorage.removeItem('sidraAdminLoggedIn');
-            location.reload();
+
+        function logoutAdmin() {
+            if (confirm('Logout from admin panel?')) {
+                location.reload();
+            }
         }
-        // Auto-login if already logged in this session
-        if (localStorage.getItem('sidraAdminLoggedIn') === 'true') {
-            document.getElementById('loginScreen').classList.add('hidden');
-            document.getElementById('adminPanel').classList.remove('hidden');
+
+        function showNewArticleForm() {
+            document.getElementById('formTitle').textContent = 'New Article';
+            document.getElementById('articleForm').reset();
+            document.getElementById('editId').value = '';
+            document.getElementById('articleFormOverlay').classList.remove('hidden');
         }
+
+        function hideArticleForm() {
+            document.getElementById('articleFormOverlay').classList.add('hidden');
+        }
+
+        function saveArticle(e) {
+            e.preventDefault();
+            const id = document.getElementById('editId').value ? parseInt(document.getElementById('editId').value) : Date.now();
+            const newArticle = {
+                id: id,
+                title: document.getElementById('titleInput').value,
+                category: document.getElementById('categoryInput').value,
+                date: "21 Feb 2026",
+                image: document.getElementById('imageInput').value || "https://picsum.photos/id/1015/1200/630",
+                excerpt: document.getElementById('excerptInput').value,
+                content: document.getElementById('contentInput').value
+            };
+            if (document.getElementById('editId').value) {
+                const index = articles.findIndex(a => a.id === id);
+                articles[index] = newArticle;
+            } else {
+                articles.unshift(newArticle);
+            }
+            saveToStorage();
+            renderAdminTable();
+            hideArticleForm();
+            alert('✅ Article saved successfully!');
+        }
+
+        function editArticle(id) {
+            const a = articles.find(x => x.id === id);
+            document.getElementById('formTitle').textContent = 'Edit Article';
+            document.getElementById('editId').value = a.id;
+            document.getElementById('titleInput').value = a.title;
+            document.getElementById('categoryInput').value = a.category;
+            document.getElementById('imageInput').value = a.image;
+            document.getElementById('excerptInput').value = a.excerpt;
+            document.getElementById('contentInput').value = a.content;
+            document.getElementById('articleFormOverlay').classList.remove('hidden');
+        }
+
+        function deleteArticle(id) {
+            if (confirm('Delete this article permanently?')) {
+                articles = articles.filter(a => a.id !== id);
+                saveToStorage();
+                renderAdminTable();
+            }
+        }
+
+        // Auto load if already logged in (for demo convenience)
+        window.onload = () => {
+            if (localStorage.getItem('sidraAdminLoggedIn') === 'true') {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                renderAdminTable();
+            }
+        };
     </script>
 </body>
 </html>
