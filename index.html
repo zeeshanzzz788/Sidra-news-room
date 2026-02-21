@@ -11,135 +11,73 @@
         body { font-family: 'Roboto', system-ui, sans-serif; }
         .headline-font { font-family: 'Playfair Display', sans-serif; }
         .bbc-red { color: #bb1919; }
-        .ticker { overflow: hidden; white-space: nowrap; animation: marquee 25s linear infinite; }
-        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .article-card { transition: all 0.3s; }
-        .article-card:hover { transform: translateY(-8px); }
+        .ticker { overflow: hidden; white-space: nowrap; animation: marquee 30s linear infinite; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
     </style>
 </head>
 <body class="bg-zinc-50 text-zinc-900">
 
     <!-- TOP BAR -->
     <div class="bg-[#002f6c] text-white text-xs py-2">
-        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
-            <span class="font-medium">Saturday 21 February 2026 • Islamabad • Global</span>
+        <div class="max-w-7xl mx-auto px-4 flex justify-between items-center">
+            <span>Saturday 21 February 2026 • Islamabad • Global</span>
             <a href="admin.html" class="hover:underline flex items-center gap-1">
                 <i class="fas fa-lock"></i> Staff Login
             </a>
         </div>
     </div>
 
-    <!-- HEADER with REAL OFFICIAL LOGO -->
+    <!-- HEADER -->
     <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
         <div class="max-w-7xl mx-auto px-4">
             <div class="flex items-center justify-between h-20">
                 <div class="flex items-center gap-4">
-                    <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" 
-                         alt="Sidra News Room Official Logo" 
-                         class="h-14 w-auto">
+                    <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" alt="Sidra News Room" class="h-14">
                     <div>
                         <span class="text-4xl font-bold tracking-tighter headline-font bbc-red">SIDRA</span>
                         <span class="text-4xl font-bold tracking-tighter headline-font">NEWS ROOM</span>
                     </div>
                 </div>
-                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
-                    <a href="#" class="hover:text-[#bb1919] transition-colors">Home</a>
-                    <a href="#" class="hover:text-[#bb1919] transition-colors">SidraChain</a>
-                    <a href="#" class="hover:text-[#bb1919] transition-colors">DeFi & Markets</a>
-                    <a href="#" class="hover:text-[#bb1919] transition-colors">Shariah Finance</a>
-                    <a href="#" class="hover:text-[#bb1919] transition-colors">Community</a>
+                <nav class="hidden md:flex gap-8 text-sm font-medium">
+                    <a href="#" class="hover:text-[#bb1919]">Home</a>
+                    <a href="#" class="hover:text-[#bb1919]">SidraChain</a>
+                    <a href="#" class="hover:text-[#bb1919]">DeFi</a>
+                    <a href="#" class="hover:text-[#bb1919]">Shariah</a>
+                    <a href="#" class="hover:text-[#bb1919]">Community</a>
                 </nav>
-                <button onclick="submitTip()" 
-                        class="bg-[#bb1919] hover:bg-red-700 text-white px-6 py-3 rounded-full text-sm font-medium flex items-center gap-2 transition-all">
-                    <i class="fas fa-paper-plane"></i> Submit Tip
+                <button onclick="submitTip()" class="bg-[#bb1919] hover:bg-red-700 text-white px-6 py-3 rounded-full font-medium flex items-center gap-2">
+                    Submit Tip
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- BREAKING TICKER -->
-    <div class="bg-[#bb1919] text-white text-sm py-2 overflow-hidden">
+    <!-- TICKER -->
+    <div class="bg-[#bb1919] text-white py-2 text-sm overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 flex items-center gap-3">
-            <span class="bg-white text-[#bb1919] font-bold px-3 py-0.5 text-xs uppercase tracking-widest">BREAKING</span>
-            <div class="ticker flex-1">
-                SidraChain records 1.2M daily transactions • New Shariah-compliant stablecoin launched today • SDA price surges +4.8% • Sidra News Room now trusted by 52,000 verified readers
-            </div>
+            <span class="bg-white text-[#bb1919] px-4 py-0.5 text-xs font-bold">LIVE</span>
+            <div class="ticker">SidraChain hits 35M transactions • New Shariah stablecoin launched • SDA +4.8% • 52K verified readers</div>
         </div>
     </div>
 
-    <!-- MAIN CONTENT -->
+    <!-- CONTENT -->
     <div class="max-w-7xl mx-auto px-4 py-10">
-        <div class="grid lg:grid-cols-12 gap-12">
-            <!-- HERO -->
-            <div class="lg:col-span-8">
-                <div onclick="openArticle(0)" class="group cursor-pointer">
-                    <div class="relative rounded-3xl overflow-hidden">
-                        <img src="https://picsum.photos/id/1015/1200/630" alt="" 
-                             class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500">
-                        <div class="absolute top-6 left-6 bg-[#bb1919] text-white px-5 py-1 text-xs font-bold rounded">LIVE • TECHNOLOGY</div>
-                    </div>
-                    <h1 class="headline-font text-4xl lg:text-5xl font-bold leading-tight mt-6 group-hover:text-[#bb1919] transition-colors">
-                        SidraChain Surpasses 35 Million Transactions – The Fastest Shariah-Compliant Blockchain in 2026
-                    </h1>
-                    <p class="mt-4 text-zinc-600 text-lg">With sub-3-second finality and zero downtime, SidraChain leads ethical blockchain innovation for global halal finance.</p>
-                    <div class="mt-6 flex items-center gap-4 text-sm text-zinc-500">
-                        <span>By Sidra News Room • 21 Feb 2026</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- RIGHT COLUMN -->
-            <div class="lg:col-span-4 space-y-8">
-                <div onclick="openArticle(1)" class="group cursor-pointer flex gap-4">
-                    <img src="https://picsum.photos/id/237/300/200" class="w-28 h-20 object-cover rounded-2xl">
-                    <div>
-                        <span class="text-xs bg-emerald-600 text-white px-3 py-1 rounded-full">DeFi</span>
-                        <p class="mt-2 line-clamp-3 font-medium group-hover:text-[#bb1919]">First Shariah-compliant lending protocol hits $42M TVL on SidraChain</p>
-                    </div>
-                </div>
-                <div onclick="openArticle(2)" class="group cursor-pointer flex gap-4">
-                    <img src="https://picsum.photos/id/251/300/200" class="w-28 h-20 object-cover rounded-2xl">
-                    <div>
-                        <span class="text-xs bg-amber-600 text-white px-3 py-1 rounded-full">Community</span>
-                        <p class="mt-2 line-clamp-3 font-medium group-hover:text-[#bb1919]">Sidra News Room Verified Contributor Program launches today</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- LATEST HEADLINES -->
-        <div class="mt-16">
-            <h2 class="text-3xl font-bold border-l-4 border-[#bb1919] pl-5 mb-8">Latest Headlines</h2>
-            <div id="articlesGrid" class="grid md:grid-cols-2 gap-8">
-                <!-- JS populated -->
-            </div>
+        <div id="articlesGrid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Populated by JS -->
         </div>
     </div>
 
     <!-- FOOTER -->
-    <footer class="bg-zinc-900 text-zinc-400 py-16">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" 
-                 class="h-16 mx-auto mb-6 opacity-80">
-            <p class="text-sm">© 2026 Sidra News Room • The Official Verified Voice of the Sidra Ecosystem</p>
-            <p class="text-xs mt-4 text-zinc-500">Built with trust and transparency</p>
-        </div>
+    <footer class="bg-zinc-900 text-zinc-400 py-12 text-center">
+        <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-12 mx-auto mb-4">
+        <p>© 2026 Sidra News Room • Official Voice of Sidra Ecosystem</p>
     </footer>
 
-    <!-- ARTICLE MODAL -->
-    <div id="articleModal" class="hidden fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
-        <div class="bg-white max-w-3xl w-full max-h-[90vh] overflow-auto rounded-3xl">
-            <div class="p-8" id="modalContent">
-                <!-- JS filled -->
-            </div>
-        </div>
-    </div>
-
     <script>
-        const articles = [
-            {id:0, title:"SidraChain Surpasses 35 Million Transactions – The Fastest Shariah-Compliant Blockchain in 2026", category:"SidraChain", date:"21 Feb 2026", image:"https://picsum.photos/id/1015/1200/630", excerpt:"With sub-3-second finality...", content:"<p>Full verified story here...</p>"},
-            {id:1, title:"First Shariah-compliant lending protocol hits $42M TVL on SidraChain", category:"DeFi", date:"20 Feb 2026", image:"https://picsum.photos/id/237/600/400", excerpt:"Murabaha-based platform...", content:"<p>Full story...</p>"},
-            {id:2, title:"Sidra News Room launches Verified Contributor Program", category:"Community", date:"19 Feb 2026", image:"https://picsum.photos/id/251/600/400", excerpt:"Fight FUD with verified content...", content:"<p>Full story...</p>"}
+        // Load articles from shared localStorage
+        let articles = JSON.parse(localStorage.getItem('sidraArticles')) || [
+            {id:0, title:"SidraChain Surpasses 35 Million Transactions", category:"SidraChain", date:"21 Feb 2026", image:"https://picsum.photos/id/1015/800/500", excerpt:"Fastest Shariah-compliant blockchain in 2026"},
+            {id:1, title:"First Shariah lending protocol hits $42M TVL", category:"DeFi", date:"20 Feb 2026", image:"https://picsum.photos/id/237/800/500", excerpt:"Murabaha-based platform goes live"}
         ];
 
         function renderArticles() {
@@ -147,15 +85,15 @@
             grid.innerHTML = '';
             articles.forEach(a => {
                 grid.innerHTML += `
-                    <div onclick="openArticle(${a.id})" class="article-card bg-white border border-zinc-200 rounded-3xl overflow-hidden cursor-pointer">
+                    <div onclick="openArticle(${a.id})" class="bg-white border border-zinc-200 rounded-3xl overflow-hidden cursor-pointer hover:shadow-xl transition-all">
                         <img src="${a.image}" class="w-full h-56 object-cover">
                         <div class="p-6">
-                            <div class="flex gap-3 text-xs">
+                            <div class="flex gap-3 text-xs mb-3">
                                 <span class="bg-[#bb1919] text-white px-4 py-1 rounded-full">${a.category}</span>
                                 <span class="text-zinc-500">${a.date}</span>
                             </div>
-                            <h3 class="font-semibold text-xl mt-4 leading-tight">${a.title}</h3>
-                            <p class="text-zinc-600 mt-3 text-sm">${a.excerpt}</p>
+                            <h3 class="font-semibold text-xl leading-tight">${a.title}</h3>
+                            <p class="text-zinc-600 text-sm mt-3">${a.excerpt}</p>
                         </div>
                     </div>
                 `;
@@ -163,25 +101,12 @@
         }
 
         function openArticle(id) {
-            const article = articles.find(a => a.id === id);
-            const modal = document.getElementById('articleModal');
-            const content = document.getElementById('modalContent');
-            content.innerHTML = `
-                <button onclick="closeModal()" class="float-right text-3xl text-zinc-400 hover:text-black">×</button>
-                <span class="bg-[#bb1919] text-white px-4 py-1 text-xs font-bold rounded-full">${article.category}</span>
-                <h1 class="headline-font text-4xl font-bold mt-6 leading-tight">${article.title}</h1>
-                <img src="${article.image}" class="w-full rounded-2xl my-8">
-                <div class="prose max-w-none">${article.content}</div>
-            `;
-            modal.classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('articleModal').classList.add('hidden');
+            const a = articles.find(x => x.id === id);
+            alert(`📖 \( {a.title}\n\n \){a.excerpt}\n\n(Full article modal would open here in production)`);
         }
 
         function submitTip() {
-            alert("✅ Thank you! Your tip has been received by the Sidra News Room editorial team.");
+            alert("✅ Tip received! Thank you for supporting transparent Sidra news.");
         }
 
         window.onload = () => {
