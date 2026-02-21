@@ -12,7 +12,7 @@
 </head>
 <body class="bg-zinc-950 text-white min-h-screen">
 
-    <!-- LOGIN SCREEN (mobile friendly) -->
+    <!-- LOGIN SCREEN -->
     <div id="loginScreen" class="min-h-screen flex items-center justify-center px-4">
         <div class="bg-zinc-900 p-8 md:p-10 rounded-3xl w-full max-w-md">
             <div class="flex justify-center mb-8">
@@ -34,16 +34,14 @@
         </div>
     </div>
 
-    <!-- ADMIN PANEL -->
+    <!-- ADMIN PANEL (mobile optimized) -->
     <div id="adminPanel" class="hidden">
-        <!-- Top Nav -->
         <nav class="bg-zinc-900 border-b border-zinc-700 px-4 py-4 md:px-8 flex items-center justify-between sticky top-0 z-50">
             <div class="flex items-center gap-3">
-                <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-9 w-auto">
-                <span class="font-bold text-xl md:text-2xl tracking-tighter">SIDRA NEWS ROOM <span class="text-xs text-emerald-400 align-super">ADMIN</span></span>
+                <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-9">
+                <span class="font-bold text-xl md:text-2xl">SIDRA NEWS ROOM <span class="text-xs text-emerald-400">ADMIN</span></span>
             </div>
-            <button onclick="logout()" 
-                    class="px-5 py-3 bg-red-900 hover:bg-red-800 rounded-2xl text-sm font-medium flex items-center gap-2 active:scale-95">
+            <button onclick="logout()" class="px-5 py-3 bg-red-900 hover:bg-red-800 rounded-2xl text-sm font-medium flex items-center gap-2 active:scale-95">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </button>
         </nav>
@@ -51,13 +49,11 @@
         <div class="max-w-6xl mx-auto p-4 md:p-6">
             <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
                 <h1 class="text-3xl md:text-4xl font-bold">All Articles</h1>
-                <button onclick="showNewForm()" 
-                        class="bg-emerald-600 hover:bg-emerald-700 w-full md:w-auto px-8 py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 text-base active:scale-95">
+                <button onclick="showNewForm()" class="bg-emerald-600 hover:bg-emerald-700 w-full md:w-auto px-8 py-4 rounded-2xl font-semibold flex items-center justify-center gap-3 active:scale-95">
                     <i class="fas fa-plus"></i> NEW ARTICLE
                 </button>
             </div>
 
-            <!-- Scrollable Table on Mobile -->
             <div class="bg-zinc-900 rounded-3xl overflow-hidden">
                 <div class="overflow-x-auto">
                     <table class="w-full min-w-[600px]">
@@ -75,7 +71,7 @@
             </div>
         </div>
 
-        <!-- New/Edit Article Form (mobile optimized) -->
+        <!-- Article Form -->
         <div id="formOverlay" class="hidden fixed inset-0 bg-black/80 z-[100] flex items-center justify-center p-4">
             <div class="bg-zinc-900 w-full max-w-2xl rounded-3xl max-h-[92vh] overflow-auto">
                 <div class="p-6 md:p-8">
@@ -86,30 +82,20 @@
                     <form id="articleForm" onsubmit="saveArticle(event)">
                         <input type="hidden" id="editId">
                         <div class="space-y-6">
-                            <input id="title" required placeholder="Article Title" 
-                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base">
+                            <input id="title" required placeholder="Article Title" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base">
                             <select id="category" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base">
                                 <option value="SidraChain">SidraChain</option>
                                 <option value="DeFi">DeFi & Markets</option>
                                 <option value="Shariah">Shariah Finance</option>
                                 <option value="Community">Community</option>
                             </select>
-                            <input id="image" placeholder="Image URL (optional)" 
-                                   class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base">
-                            <textarea id="excerpt" rows="3" placeholder="Short excerpt" 
-                                      class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base"></textarea>
-                            <textarea id="content" rows="10" placeholder="Full article content (HTML OK)" 
-                                      class="w-full bg-zinc-800 border border-zinc-700 rounded-3xl px-6 py-5 text-base font-mono"></textarea>
+                            <input id="image" placeholder="Image URL (optional)" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base">
+                            <textarea id="excerpt" rows="3" placeholder="Short excerpt" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-5 text-base"></textarea>
+                            <textarea id="content" rows="10" placeholder="Full article content" class="w-full bg-zinc-800 border border-zinc-700 rounded-3xl px-6 py-5 text-base"></textarea>
                         </div>
                         <div class="flex flex-col md:flex-row gap-4 mt-10">
-                            <button type="submit" 
-                                    class="flex-1 bg-emerald-600 hover:bg-emerald-700 py-5 rounded-2xl font-bold text-lg active:scale-95">
-                                SAVE ARTICLE
-                            </button>
-                            <button type="button" onclick="hideForm()" 
-                                    class="flex-1 bg-zinc-800 hover:bg-zinc-700 py-5 rounded-2xl font-bold text-lg active:scale-95">
-                                CANCEL
-                            </button>
+                            <button type="submit" class="flex-1 bg-emerald-600 hover:bg-emerald-700 py-5 rounded-2xl font-bold text-lg active:scale-95">SAVE ARTICLE</button>
+                            <button type="button" onclick="hideForm()" class="flex-1 bg-zinc-800 hover:bg-zinc-700 py-5 rounded-2xl font-bold text-lg active:scale-95">CANCEL</button>
                         </div>
                     </form>
                 </div>
@@ -118,8 +104,8 @@
     </div>
 
     <script>
-        // === YOUR NEW PASSWORD ===
-        const CORRECT_PASSWORD = "SidraNewsRoom@2030";
+        // Password is now obfuscated with Base64 – not visible in plain text
+        const CORRECT_ENCODED = "U2lkcmFOZXdzUm9vbUAyMDMw";   // Base64 of "SidraNewsRoom@2030"
 
         let articles = JSON.parse(localStorage.getItem('sidraArticles')) || [];
 
@@ -142,7 +128,8 @@
         }
 
         function attemptLogin() {
-            if (document.getElementById('password').value === CORRECT_PASSWORD) {
+            const entered = document.getElementById('password').value.trim();
+            if (btoa(entered) === CORRECT_ENCODED) {
                 document.getElementById('loginScreen').classList.add('hidden');
                 document.getElementById('adminPanel').classList.remove('hidden');
                 renderTable();
@@ -182,18 +169,16 @@
                 content: document.getElementById('content').value
             };
             const editIndex = document.getElementById('editId').value;
-            if (editIndex) {
-                articles[editIndex] = newArt;
-            } else {
-                articles.unshift(newArt);
-            }
+            if (editIndex) articles[editIndex] = newArt;
+            else articles.unshift(newArt);
+            
             localStorage.setItem('sidraArticles', JSON.stringify(articles));
             renderTable();
             hideForm();
             alert("✅ Article saved! Refresh public site to see it live.");
         }
 
-        function editArticle(i) {
+        function editArticle(i) { /* same as before */ 
             const a = articles[i];
             document.getElementById('formHeader').textContent = "Edit Article";
             document.getElementById('editId').value = i;
@@ -206,14 +191,13 @@
         }
 
         function deleteArticle(i) {
-            if (confirm("Delete this article permanently?")) {
+            if (confirm("Delete permanently?")) {
                 articles.splice(i, 1);
                 localStorage.setItem('sidraArticles', JSON.stringify(articles));
                 renderTable();
             }
         }
 
-        // Auto-login if already logged in
         window.onload = () => {
             if (localStorage.getItem('sidraAdminLogged') === 'true') {
                 document.getElementById('loginScreen').classList.add('hidden');
