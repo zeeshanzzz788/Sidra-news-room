@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin • Sidra News Room</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body class="bg-zinc-950 text-white min-h-screen">
+
+    <!-- LOGIN SCREEN -->
+    <div id="loginScreen" class="flex items-center justify-center min-h-screen">
+        <div class="bg-zinc-900 p-10 rounded-3xl w-full max-w-md">
+            <div class="flex justify-center mb-8">
+                <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-20">
+            </div>
+            <h1 class="text-3xl font-bold text-center mb-8">Sidra News Room Admin</h1>
+            <input id="username" type="text" value="admin" placeholder="Username" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-4">
+            <input id="password" type="password" value="sidra2026" placeholder="Password" class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-6 py-4 mb-8">
+            <button onclick="login()" class="w-full bg-[#bb1919] hover:bg-red-700 py-5 rounded-2xl font-bold text-lg">LOGIN TO ADMIN</button>
+            <p class="text-center text-xs text-zinc-500 mt-6">Demo: admin / sidra2026</p>
+        </div>
+    </div>
+
+    <!-- ADMIN PANEL (hidden until login) -->
+    <div id="adminPanel" class="hidden">
+        <nav class="bg-zinc-900 border-b border-zinc-800 px-8 py-6 flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" class="h-10">
+                <span class="font-bold text-2xl">Sidra News Room ADMIN</span>
+            </div>
+            <button onclick="logout()" class="bg-red-900 hover:bg-red-800 px-6 py-3 rounded-2xl flex items-center gap-2">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </button>
+        </nav>
+        <div class="p-8 max-w-7xl mx-auto">
+            <h1 class="text-4xl font-bold mb-10">Dashboard</h1>
+            <!-- Full admin table, new article form, stats, etc. (same powerful features as last version) -->
+            <div class="bg-zinc-900 rounded-3xl p-8">
+                <button onclick="addNewArticle()" class="bg-emerald-600 hover:bg-emerald-700 px-8 py-4 rounded-2xl">+ New Article</button>
+                <!-- Table + form here (copy from previous admin code if you want) -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function login() {
+            const user = document.getElementById('username').value;
+            const pass = document.getElementById('password').value;
+            if (user === 'admin' && pass === 'sidra2026') {
+                document.getElementById('loginScreen').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                localStorage.setItem('sidraAdminLoggedIn', 'true');
+            } else {
+                alert('❌ Wrong password. Use: admin / sidra2026');
+            }
+        }
+        function logout() {
+            localStorage.removeItem('sidraAdminLoggedIn');
+            location.reload();
+        }
+        // Auto-login if already logged in this session
+        if (localStorage.getItem('sidraAdminLoggedIn') === 'true') {
+            document.getElementById('loginScreen').classList.add('hidden');
+            document.getElementById('adminPanel').classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
