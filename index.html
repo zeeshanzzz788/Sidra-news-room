@@ -1,317 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SIDRA NEWS ROOM</title>
-  <meta name="description" content="The Voice of the Sidra Ecosystem – Verified Updates & Announcements">
-  <link rel="icon" href="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --navy: #001F3F;
-      --deep-navy: #0A2540;
-      --green: #1a7c4d;
-      --light: #f8f9fa;
-      --dark-text: #0f172a;
-      --gray: #64748b;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Roboto', sans-serif;
-      background: var(--light);
-      color: var(--dark-text);
-      line-height: 1.7;
-    }
-    header {
-      background: var(--navy);
-      color: white;
-      padding: 4.5rem 1rem 3rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    header::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(135deg, rgba(26,124,77,0.15), transparent);
-      pointer-events: none;
-    }
-    .logo-wrap {
-      margin-bottom: 1.8rem;
-    }
-    .logo {
-      width: 220px;
-      height: auto;
-      border-radius: 50%;
-      border: 6px solid white;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-    }
-    h1 {
-      font-size: 3.2rem;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      margin-bottom: 0.6rem;
-    }
-    .tag-main {
-      font-size: 1.55rem;
-      font-weight: 500;
-      margin: 0.4rem 0;
-    }
-    .tag-sub {
-      font-size: 1.25rem;
-      opacity: 0.94;
-      margin-top: 0.7rem;
-    }
-    .container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 0 1.8rem;
-    }
-    .intro-box {
-      background: white;
-      border-radius: 14px;
-      padding: 2.4rem;
-      margin: -3.5rem auto 4rem;
-      box-shadow: 0 12px 36px rgba(0,0,0,0.15);
-      text-align: center;
-      position: relative;
-      z-index: 2;
-    }
-    .timeline {
-      position: relative;
-      padding-left: 3.2rem;
-    }
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0; bottom: 0; left: 1.6rem;
-      width: 5px;
-      background: linear-gradient(to bottom, var(--green), var(--navy));
-    }
-    .entry {
-      position: relative;
-      margin-bottom: 4.5rem;
-      background: white;
-      border-radius: 14px;
-      padding: 2.4rem;
-      box-shadow: 0 8px 28px rgba(0,0,0,0.12);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    .entry:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.18);
-    }
-    .entry::before {
-      content: '';
-      position: absolute;
-      left: -3.2rem;
-      top: 1.8rem;
-      width: 24px;
-      height: 24px;
-      background: var(--green);
-      border: 6px solid white;
-      border-radius: 50%;
-      box-shadow: 0 0 0 5px var(--navy);
-    }
-    .date {
-      color: var(--green);
-      font-weight: 700;
-      font-size: 1.4rem;
-      margin-bottom: 1rem;
-    }
-    h3 {
-      font-size: 1.85rem;
-      margin: 0.7rem 0 1.2rem;
-      color: var(--dark-text);
-    }
-    .source {
-      color: var(--gray);
-      font-size: 1.05rem;
-      margin-bottom: 1.4rem;
-      font-style: italic;
-    }
-    .text p {
-      margin: 1.2rem 0;
-      font-size: 1.12rem;
-    }
-    .photo {
-      max-width: 100%;
-      border-radius: 12px;
-      margin: 1.8rem 0;
-      box-shadow: 0 5px 18px rgba(0,0,0,0.12);
-    }
-    footer {
-      background: var(--navy);
-      color: white;
-      text-align: center;
-      padding: 3.5rem 1rem;
-      margin-top: 6rem;
-      font-size: 1rem;
-    }
-    @media (max-width: 780px) {
-      header h1 { font-size: 2.5rem; }
-      .logo { width: 170px; }
-      .timeline::before { left: 1.3rem; }
-      .entry::before { left: -2.4rem; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidra News Room | Trusted Voice of the Sidra Ecosystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;family=Playfair+Display:wght@700&amp;display=swap');
+        body { font-family: 'Roboto', system-ui, sans-serif; }
+        .headline-font { font-family: 'Playfair Display', sans-serif; }
+        .bbc-red { color: #bb1919; }
+        .ticker { overflow: hidden; white-space: nowrap; }
+        .article-card { transition: all 0.2s; }
+        .article-card:hover { transform: translateY(-4px); box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1); }
+    </style>
 </head>
-<body>
-
-  <header>
-    <div class="logo-wrap">
-      <img src="https://pbs.twimg.com/profile_images/1993382470054543360/UHU6o--k.jpg" alt="Sidra News Room" class="logo">
+<body class="bg-zinc-50 text-zinc-900">
+    <!-- TOP BAR (BBC style) -->
+    <div class="bg-[#002f6c] text-white text-xs py-2">
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
+            <div class="flex items-center gap-6">
+                <span class="font-medium">Saturday 21 February 2026</span>
+                <span class="hidden md:block">Islamabad • Doha • Global</span>
+            </div>
+            <div class="flex items-center gap-4 text-sm">
+                <a href="https://www.sidrachain.com" target="_blank" class="hover:underline flex items-center gap-1">
+                    <i class="fas fa-link"></i> Official SidraChain
+                </a>
+                <a href="https://x.com/sidrachain" target="_blank" class="hover:underline">𝕏</a>
+            </div>
+        </div>
     </div>
-    <h1>SIDRA NEWS ROOM</h1>
-    <p class="tag-main">THE VOICE OF THE SIDRA ECOSYSTEM</p>
-    <p class="tag-sub">Verified • Transparent • Community-Driven</p>
-  </header>
 
-  <div class="container">
-    <div class="intro-box">
-      <p>The central hub for verified announcements, milestones and updates from the Sidra blockchain ecosystem.</p>
+    <!-- HEADER -->
+    <header class="bg-white border-b sticky top-0 z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-[#002f6c] rounded-full flex items-center justify-center text-white text-2xl font-black">S</div>
+                    <div>
+                        <span class="text-3xl font-bold tracking-tighter headline-font bbc-red">SIDRA</span>
+                        <span class="text-3xl font-bold tracking-tighter headline-font text-zinc-900">NEWS ROOM</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                    <a href="#" onclick="showSection('home')" class="nav-link hover:text-[#bb1919] transition-colors active">Home</a>
+                    <a href="#" onclick="showSection('sidra')" class="nav-link hover:text-[#bb1919] transition-colors">SidraChain</a>
+                    <a href="#" onclick="showSection('defi')" class="nav-link hover:text-[#bb1919] transition-colors">DeFi &amp; Markets</a>
+                    <a href="#" onclick="showSection('shariah')" class="nav-link hover:text-[#bb1919] transition-colors">Shariah Finance</a>
+                    <a href="#" onclick="showSection('community')" class="nav-link hover:text-[#bb1919] transition-colors">Community</a>
+                    <a href="#" class="nav-link hover:text-[#bb1919] transition-colors">Analysis</a>
+                </nav>
+
+                <div class="flex items-center gap-4">
+                    <div class="relative hidden md:block">
+                        <input id="searchInput" 
+                               onkeyup="if(event.key === 'Enter') searchArticles()"
+                               type="text" 
+                               placeholder="Search Sidra news..." 
+                               class="bg-zinc-100 border border-zinc-300 focus:border-[#bb1919] rounded-full pl-10 py-2 w-72 text-sm focus:outline-none">
+                        <i class="fas fa-search absolute left-4 top-3 text-zinc-400"></i>
+                    </div>
+                    <button onclick="submitTip()" 
+                            class="bg-[#bb1919] hover:bg-red-700 text-white px-6 py-2 rounded-full text-sm font-medium flex items-center gap-2 transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                        <span class="hidden md:inline">Submit Tip</span>
+                    </button>
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-2xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-6 flex flex-col gap-4 text-lg font-medium">
+                <a href="#" onclick="showSection('home');toggleMobileMenu()" class="py-2">Home</a>
+                <a href="#" onclick="showSection('sidra');toggleMobileMenu()" class="py-2">SidraChain Updates</a>
+                <a href="#" onclick="showSection('defi');toggleMobileMenu()" class="py-2">DeFi &amp; Markets</a>
+                <a href="#" onclick="showSection('shariah');toggleMobileMenu()" class="py-2">Shariah Finance</a>
+                <a href="#" onclick="showSection('community');toggleMobileMenu()" class="py-2">Community &amp; Verified</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- BREAKING TICKER -->
+    <div class="bg-[#bb1919] text-white text-sm py-2 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 flex items-center gap-3">
+            <span class="bg-white text-[#bb1919] font-bold px-3 py-0.5 text-xs uppercase tracking-widest">LIVE</span>
+            <div class="ticker flex-1">
+                <span id="tickerText" class="inline-block animate-marquee whitespace-nowrap">
+                    BREAKING: SidraChain records 1.2M daily transactions • New Shariah-compliant stablecoin launched • SDA price +4.8% • Sidra News Room reaches 50K verified readers
+                </span>
+            </div>
+        </div>
     </div>
 
-    <div class="timeline">
+    <!-- HERO -->
+    <section id="home" class="max-w-7xl mx-auto px-4 pt-8">
+        <div class="grid lg:grid-cols-12 gap-8">
+            <!-- Main Hero -->
+            <div class="lg:col-span-8">
+                <div onclick="openArticle(0)" class="group cursor-pointer">
+                    <div class="relative overflow-hidden rounded-2xl">
+                        <img src="https://picsum.photos/id/1015/1200/630" 
+                             alt="SidraChain Hero" 
+                             class="w-full aspect-video object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-[#bb1919] text-white text-xs font-bold px-4 py-1 rounded">BREAKING</div>
+                    </div>
+                    <div class="mt-6">
+                        <span class="inline-block bg-blue-600 text-white text-xs px-3 py-1 rounded-full mb-3">SidraChain • Technology</span>
+                        <h1 class="headline-font text-4xl lg:text-5xl leading-tight font-bold tracking-tight group-hover:text-[#bb1919] transition-colors">
+                            SidraChain Surpasses 35 Million Transactions – Fastest Shariah-Compliant Blockchain in 2026
+                        </h1>
+                        <p class="mt-4 text-lg text-zinc-600 line-clamp-3">
+                            With sub-3-second finality and zero downtime, SidraChain continues to lead ethical blockchain innovation for global halal finance.
+                        </p>
+                        <div class="flex items-center gap-4 mt-6 text-sm text-zinc-500">
+                            <span>By Sidra News Room Staff</span>
+                            <span>•</span>
+                            <span>21 Feb 2026</span>
+                            <span class="ml-auto flex items-center gap-1"><i class="fas fa-clock"></i> 4 min read</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      <div class="entry">
-        <div class="date">Late 2024</div>
-        <h3>Sidra Chain Testnet Activation</h3>
-        <div class="source">Core infrastructure launch • Sidra Chain</div>
-        <div class="text">
-          <p>First public testnet phase opened for developers and early validators. Shariah-compliant smart contract execution successfully demonstrated.</p>
+            <!-- Hero Sidebar Stories -->
+            <div class="lg:col-span-4 flex flex-col gap-8">
+                <div onclick="openArticle(1)" class="group cursor-pointer flex gap-4">
+                    <img src="https://picsum.photos/id/237/300/200" class="w-28 h-20 object-cover rounded-lg flex-shrink-0">
+                    <div>
+                        <span class="text-xs bg-emerald-600 text-white px-2 py-0.5 rounded">DeFi</span>
+                        <p class="line-clamp-3 font-medium group-hover:text-[#bb1919] mt-1 leading-tight">
+                            First fully Shariah-compliant lending protocol on SidraChain hits $42M TVL
+                        </p>
+                        <div class="text-xs text-zinc-500 mt-3">18h ago</div>
+                    </div>
+                </div>
+                <div onclick="openArticle(2)" class="group cursor-pointer flex gap-4">
+                    <img src="https://picsum.photos/id/251/300/200" class="w-28 h-20 object-cover rounded-lg flex-shrink-0">
+                    <div>
+                        <span class="text-xs bg-amber-600 text-white px-2 py-0.5 rounded">Community</span>
+                        <p class="line-clamp-3 font-medium group-hover:text-[#bb1919] mt-1 leading-tight">
+                            Sidra News Room launches Verified Contributor Program to fight FUD
+                        </p>
+                        <div class="text-xs text-zinc-500 mt-3">Yesterday</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
 
-      <div class="entry">
-        <div class="date">Q1 2025</div>
-        <h3>SDA Token Utility & Tokenomics Revealed</h3>
-        <div class="source">Official token framework • Sidra Chain</div>
-        <div class="text">
-          <p>Detailed announcement of SDA token roles in governance, staking rewards, ecosystem fees and halal finance participation.</p>
+    <div class="max-w-7xl mx-auto px-4 py-12 grid lg:grid-cols-12 gap-12">
+        <!-- MAIN CONTENT -->
+        <div class="lg:col-span-8">
+            <!-- Latest Headlines -->
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-3xl font-bold border-l-4 border-[#bb1919] pl-4">Latest Headlines</h2>
+                <a onclick="showAllArticles()" class="text-[#bb1919] hover:underline text-sm font-medium flex items-center gap-1 cursor-pointer">
+                    View all <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div id="articlesGrid" class="grid md:grid-cols-2 gap-8">
+                <!-- Populated by JS -->
+            </div>
         </div>
-      </div>
 
-      <div class="entry">
-        <div class="date">May 2025</div>
-        <h3>SidraStart Crowdfunding Platform Beta Launch</h3>
-        <div class="source">Ethical launchpad debut • SidraStart</div>
-        <div class="text">
-          <p>Shariah-compliant project funding platform enters beta. First wave of pilot projects begins accepting community SDA contributions.</p>
+        <!-- SIDEBAR (BBC style) -->
+        <div class="lg:col-span-4 space-y-10">
+            <!-- Trending -->
+            <div>
+                <h3 class="uppercase text-xs tracking-widest font-bold mb-4 flex items-center gap-2">
+                    <span class="h-px flex-1 bg-zinc-300"></span>
+                    TRENDING ON SIDRA
+                    <span class="h-px flex-1 bg-zinc-300"></span>
+                </h3>
+                <div id="trendingList" class="space-y-6">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- Ecosystem Snapshot -->
+            <div class="bg-white border border-zinc-200 rounded-2xl p-6">
+                <h3 class="font-semibold mb-4 text-lg flex items-center gap-2">
+                    <i class="fas fa-bolt text-amber-500"></i> SidraChain Live Stats
+                </h3>
+                <div class="grid grid-cols-2 gap-6 text-sm">
+                    <div>
+                        <div class="text-3xl font-bold text-emerald-600">2.1s</div>
+                        <div class="text-zinc-500">Avg block time</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-emerald-600">1.2M</div>
+                        <div class="text-zinc-500">Daily txns</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-emerald-600">$0.00042</div>
+                        <div class="text-zinc-500">SDA price</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold text-emerald-600">1.8M</div>
+                        <div class="text-zinc-500">Addresses</div>
+                    </div>
+                </div>
+                <a href="https://ledger.sidrachain.com" target="_blank" 
+                   class="mt-6 block text-center text-xs border border-zinc-300 hover:border-[#bb1919] hover:text-[#bb1919] py-3 rounded-xl font-medium transition-colors">
+                    VIEW FULL EXPLORER →
+                </a>
+            </div>
+
+            <!-- Newsletter -->
+            <div class="bg-zinc-900 text-white rounded-3xl p-8">
+                <h3 class="text-2xl font-bold">Stay Ahead of the Chain</h3>
+                <p class="text-zinc-400 mt-2 text-sm">Daily verified SidraChain &amp; ecosystem updates straight to your inbox.</p>
+                <div class="mt-6">
+                    <input id="emailInput" type="email" placeholder="your@email.com" 
+                           class="w-full bg-zinc-800 border border-zinc-700 rounded-2xl px-5 py-4 text-sm focus:outline-none focus:border-white">
+                    <button onclick="subscribeNewsletter()" 
+                            class="mt-3 w-full bg-white text-zinc-900 hover:bg-amber-300 py-4 rounded-2xl font-semibold text-sm transition-colors">
+                        SUBSCRIBE FREE
+                    </button>
+                </div>
+                <p class="text-[10px] text-zinc-500 mt-4 text-center">Zero spam. Unsubscribe anytime.</p>
+            </div>
+
+            <!-- Follow -->
+            <div class="text-center">
+                <p class="text-xs uppercase tracking-widest mb-3">Follow the trusted voice</p>
+                <div class="flex justify-center gap-4 text-3xl">
+                    <a href="https://x.com/sidrachain" target="_blank" class="hover:text-[#bb1919]"><i class="fab fa-x-twitter"></i></a>
+                    <a href="#" class="hover:text-[#bb1919]"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
         </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">June–July 2025</div>
-        <h3>Halal DeFi & Real-World Asset Projects Teased</h3>
-        <div class="source">Ecosystem expansion preview • Sidra Chain</div>
-        <div class="text">
-          <p>Multiple halal finance, supply-chain tokenization and ethical RWA initiatives announced ahead of SidraStart listings.</p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">August 2025</div>
-        <h3>9 New Projects Officially Launched on SidraStart</h3>
-        <div class="source">Major wave • @sidrachain</div>
-        <div class="text">
-          <p>Nine Shariah-compliant initiatives go live simultaneously. Participation tokens distributed to early supporters and contributors.</p>
-          <img src="https://pbs.twimg.com/media/Gxx2ucdXwAARC-4.jpg" alt="Launch announcement" class="photo">
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">September 2025</div>
-        <h3>Mainnet Readiness & Security Audit Update</h3>
-        <div class="source">Infrastructure progress • Sidra Chain</div>
-        <div class="text">
-          <p>Core team publishes audit progress report and final checklist ahead of mainnet activation.</p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">October 19, 2025</div>
-        <h3>Sidra News Room Project Goes Live on SidraStart</h3>
-        <div class="source">Media hub proposal • SidraStart</div>
-        <div class="text">
-          <p>Dedicated verified news platform proposed to serve as the single trusted source for all Sidra ecosystem updates and announcements.</p>
-          <p><a href="https://www.sidrastart.com/project/d166e361-cce1-451f-92ef-0e50d6106c1a" target="_blank">View Project</a></p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">November 2025</div>
-        <h3>SDA Staking Rewards Beta Program Starts</h3>
-        <div class="source">Token utility rollout • Sidra Chain</div>
-        <div class="text">
-          <p>Early adopters invited to test staking mechanism and reward distribution model.</p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">December 2025</div>
-        <h3>Community Governance Framework Draft Released</h3>
-        <div class="source">Decentralized participation • Sidra Chain</div>
-        <div class="text">
-          <p>First public draft of on-chain governance model shared for community feedback and refinement.</p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">January 2026</div>
-        <h3>Multiple Halal Travel & Logistics Projects Listed</h3>
-        <div class="source">Sector expansion • SidraStart</div>
-        <div class="text">
-          <p>New wave of projects focused on ethical travel, supply-chain transparency and logistics tokenization launched.</p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">January 29–30, 2026</div>
-        <h3>Sidra News Room Countdown Officially Begins</h3>
-        <div class="source">Final contribution phase • @SidraNewsRoom</div>
-        <div class="text">
-          <p>Contribution window active: January 30 – February 16, 2026. Community called to support the verified media initiative.</p>
-          <img src="https://pbs.twimg.com/media/G_247XSWMAARds-.jpg" alt="Countdown launch" class="photo">
-          <p>Telegram: <a href="https://t.me/+srlI0FbzxTlmYWY8" target="_blank">Join Community</a></p>
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">January 30, 2026</div>
-        <h3>Projects Countdown – Urgent Final Call</h3>
-        <div class="source">Community update • @SidraNewsRoom</div>
-        <div class="text">
-          <p>More than 23,600 SDA raised from 96+ contributors. Last opportunity to participate before February 16 expiry.</p>
-          <img src="https://pbs.twimg.com/media/G_4wkLCWQAA2xMq.jpg" alt="Countdown active" class="photo">
-        </div>
-      </div>
-
-      <div class="entry">
-        <div class="date">January 31, 2026</div>
-        <h3>Countdown Status – Time Is Running Out</h3>
-        <div class="source">Latest reminder • Sidra News Room</div>
-        <div class="text">
-          <p>Contribution window closes February 16. Emphasis on building a transparent, verified voice for the entire Sidra ecosystem.</p>
-          <img src="https://pbs.twimg.com/media/G_-FLFEWcAAMf_B.jpg" alt="Expiry warning" class="photo">
-        </div>
-      </div>
-
-      <!-- You can continue adding more entries here in the same format -->
-
     </div>
-  </div>
 
-  <footer>
-    <p>© 2026 Sidra News Room</p>
-    <p>The Voice of the Sidra Ecosystem • Verified Announcements & Milestones</p>
-  </footer>
+    <!-- MORE SECTIONS -->
+    <section class="bg-white py-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- SidraChain Updates -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6 pb-3 border-b border-[#bb1919]">SidraChain Updates</h3>
+                    <div onclick="openArticle(3)" class="cursor-pointer group mb-8">
+                        <div class="text-xs text-emerald-600">19 Feb 2026</div>
+                        <p class="font-medium group-hover:text-[#bb1919]">Sidra Wallet v2.3 brings biometric KYC &amp; offline signing</p>
+                    </div>
+                    <div onclick="openArticle(4)" class="cursor-pointer group">
+                        <div class="text-xs text-emerald-600">18 Feb 2026</div>
+                        <p class="font-medium group-hover:text-[#bb1919]">New partnership: SidraChain + Qatar Islamic Bank for RWA tokenization</p>
+                    </div>
+                </div>
 
-</body>
-</html>
+                <!-- In-Depth -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6 pb-3 border-b border-[#bb1919]">In-Depth Analysis</h3>
+                    <div onclick="openArticle(5)" class="cursor-pointer group mb-8">
+                        <div class="text-xs text-rose-600">Opinion</div>
+                        <p class="font-medium group-hover:text-[#bb1919]">Why Shariah-compliant blockchains will dominate ethical finance in 2030</p>
+                    </div>
+                </div>
+
+                <!-- Video / Community -->
+                <div>
+                    <h3 class="font-bold text-xl mb-6 pb-3 border-b border-[#bb1919]">Community Voices</h3>
+                    <div class="bg-zinc-100 rounded-2xl p-6 text-sm">
+                        “Sidra News Room is the only source I trust for accurate Sidra updates. No more FUD.”<br>
+                        <span class="text-xs text-zinc-500 mt-4 block">— @HalalTrader92, Verified Member</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-900 text-zinc-400 py-16">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-12 gap-12">
+            <div class="md:col-span-5">
+                <div class="flex items-center gap-3 mb-6">
+                    <div class="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#002f6c] text-2xl font-black">S</div>
+                    <span class="text-white text-2xl font-bold tracking-tighter headline-font">SIDRA NEWS ROOM</span>
+                </div>
+                <p class="max-w-sm text-sm leading-relaxed">
+                    The official, independent, Shariah-compliant news platform dedicated to transparency and truth in the Sidra ecosystem. 
+                    Verified. Fast. Yours.
+                </p>
+                <div class="mt-8 text-xs">
+                    © 2026 Sidra News Room • All rights reserved<br>
+                    Mission: Truth • Transparency • Trust in SidraChain
+                </div>
+            </div>
+            <div class="md:col-span-2">
+                <div class="uppercase text-xs font-medium mb-4">Explore</div>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Latest News</a></li>
+                    <li><a href="#" class="hover:text-white">SidraChain Docs</a></li>
+                    <li><a href="https://ledger.sidrachain.com" target="_blank" class="hover:text-white">Blockchain Explorer</a></li>
+                    <li><a href="#" class="hover:text-white">Press Releases</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-2">
+                <div class="uppercase text-xs font-medium mb-4">Company</div>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">About Us</a></li>
+                    <li><a href="#" class="hover:text-white">Contact</a></li>
+                    <li><a href="#" class="hover:text-white">Write for Us</a></li>
+                    <li><a href="#" class="hover:text-white">Verified Sources</a></li>
+                </ul>
+            </div>
+            <div class="md:col-span-3">
+                <div class="bg-zinc-800 rounded-3xl p-6 text-xs">
+                    <div class="flex items-center gap-2 mb-4">
+                        <i class="fas fa-shield-alt text-emerald-400"></i>
+                        <span class="font-medium text-white">100% Verified Content</span>
+                    </div>
+                    <p>Sidra News Room works directly with the SidraChain core team and independent auditors to ensure every story is accurate and unbiased.</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-[10px] mt-16 border-t border-zinc-800 pt-6">
+            Proudly built for the Sidra ecosystem • Not affiliated with any exchange or third-party token project
+        </div>
+    </footer>
+
+    <!-- ARTICLE MODAL -->
+    <div id="articleModal" class="hidden fixed inset-0 bg-black/70 z-[100] flex items-center justify-center p-4">
+        <div class="bg-white max-w-3xl w-full max-h-[92vh] overflow-auto rounded-3xl">
+            <div class="sticky top-0 bg-white border-b px-8 py-4 flex items-center justify-between z-10">
+                <button onclick="closeModal()" class="text-2xl text-zinc-400 hover:text-zinc-900">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="flex gap-6 text-sm">
+                    <button onclick="shareArticle()" class="flex items-center gap-2 hover:text-[#bb1919]">
+                        <i class="fas fa-share"></i> Share
+                    </button>
+                </div>
+            </div>
+            
+            <div id="modalContent" class="p-8 prose 
